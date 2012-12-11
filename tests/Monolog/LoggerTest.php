@@ -121,6 +121,7 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($processor2, $logger->popProcessor());
         $this->assertEquals($processor1, $logger->popProcessor());
         $logger->popProcessor();
+        $logger->popProcessor();
     }
 
     /**
