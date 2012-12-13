@@ -14,7 +14,7 @@ namespace Monolog\Processor;
 /**
  * Processes a record's message according to PSR-3 rules
  *
- * It replaces %foo% with the value from $context['foo']
+ * It replaces {foo} with the value from $context['foo']
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */
@@ -26,13 +26,13 @@ class PsrLogMessageProcessor
      */
     public function __invoke(array $record)
     {
-        if (false === strpos($record['message'], '%')) {
+        if (false === strpos($record['message'], '{')) {
             return $record;
         }
 
         $replacements = array();
         foreach ($record['context'] as $key => $val) {
-            $replacements['%'.$key.'%'] = $val;
+            $replacements['{'.$key.'}'] = $val;
         }
 
         $record['message'] = strtr($record['message'], $replacements);

@@ -13,7 +13,7 @@ namespace Monolog;
 
 use Monolog\Handler\TestHandler;
 use Monolog\Formatter\LineFormatter;
-use Psr\Log\LoggerInterfaceTest;
+use Psr\Log\Test\LoggerInterfaceTest;
 
 class PsrLogCompatTest extends LoggerInterfaceTest
 {
