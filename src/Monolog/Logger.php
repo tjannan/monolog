@@ -101,6 +101,8 @@ class Logger
 
     protected $processors = array();
 
+    protected $extra = array();
+
     /**
      * @param string $name The logging channel
      */
@@ -192,7 +194,7 @@ class Logger
             'level_name' => static::getLevelName($level),
             'channel' => $this->name,
             'datetime' => \DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true)), static::$timezone)->setTimezone(static::$timezone),
-            'extra' => array(),
+            'extra' => $this->extra,
         );
         // check if any handler will handle this message
         $handlerKey = null;
@@ -344,7 +346,7 @@ class Logger
             'level_name' => static::getLevelName($level),
             'channel' => $this->name,
             'datetime' => new \DateTime('now', static::$timezone),
-            'extra' => array(),
+            'extra' => $this->extra,
         );
 
         foreach ($this->handlers as $key => $handler) {
